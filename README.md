@@ -1,4 +1,5 @@
-<center><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></center>
+<div><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
+
 
 
 ## Sobre o projeto
@@ -88,7 +89,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
             }
 
           async startCommand(message, args){
-                message.channel.send('pong!')
+                message.channel.send('pong! '+ Math.round(this.client.ping))
             }
         }
         module.exports = ping
