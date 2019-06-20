@@ -1,0 +1,15 @@
+{
+    "guildDelete":    "[AVISO] O bot {client.tag} saiu do servidor {guild} por ser um bot privado",
+    "fetchUser":      "[SUCESSO] O usuário {member.username} foi adicionado como desenvolvedor com sucesso",
+    "fetchUserError": "[AVISO] O id do usuário setado não se encontra.",
+    "prefixErr":      "[ERROR] adicione qual prefixo que seu bot irá utilizar",
+    "tokenErr":       "[ERRO] O token do bot não floi declarado na instância client.",
+    "commanArgs":     "[ERRO] O argumento command não definida.",
+    "errClient":      "[ERRO] client não foi definida.",
+    "warnCooldown":   ":clock4: **|** {member}  **Aguarde alguns segundos para executar o próximo comando.**",
+    "warnOwner":      "**Você não possui a permissão desenvolvedor para executar este comando.",
+    "permissionBot":  "** {member}, Não possuo a permissão `{permissions}` para executar o comando: `{command}`.**",
+    "hasPermission":  "** {member}, Você não possui a permissão `{permissions}` para executar o comando: `{command}`.",
+    "guildsMessage":  "[SUCESSO] {guild} ({guild.id}) foi adicionado com sucesso!",
+    "guildsErr":      "[SUCESSO] O servidor com id {g.id} foi adicionado com sucesso, mas não foi encontrado no momento!"
+}
