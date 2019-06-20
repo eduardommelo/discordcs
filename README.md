@@ -79,7 +79,6 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
             constructor(client){
                 super(client,{
                     command: 'ping',
-                    module: 'teste',
                     aliases: ['p'],
                     description: 'ping pong',
                 })
