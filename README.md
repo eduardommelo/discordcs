@@ -1,4 +1,4 @@
-
+<center><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></center>
 ## Sobre o projeto
 O **DiscordCS** é uma biblioteca de suporte para [discord.js](https://discord.js.org/#/docs/main/stable/class/Guild) com o foco de desenvolver um projeto de uma forma estruturada e seja mais simples para aqueles que não possui uma experiência de desenvolver um bot, desenvolvido em   [Node.js](https://nodejs.org), ele traz esta solução para os usuários criar sua aplicação de uma forma mais rápida e ao mesmo tempo bem estruturada, é claro que estou prezando também para aqueles que quer desenvolver algo mais complexo.
 
@@ -29,7 +29,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
   - Funções / Instâncias
     - `Client(options)`: Instância responsável por da inicio ao bot e configura-lo.
 
-      -`options.token`: Informar o token de sua aplicação. (Obrigatório)
+      -`options.tokne`: Informar o token de sua aplicação. (Obrigatório)
       -`options.prefixes`: informar o prefixo do seu bot (em breve terá como adicionar em array). (Obrigatório)
       - `options.guilds`: Caso queira que sua aplicação seja exclusiva para algumas guildas, adicione a id da guild ( caso seja um não precisa ser em array, caso seja mais de um é obrigatório ser em array).
       - `options.cooldown`: Configurar cooldown de sua aplicação.
@@ -82,6 +82,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
                     aliases: ['p'],
                     description: 'ping pong',
                 })
+                this.client = client
             }
 
           async startCommand(message, args){
