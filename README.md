@@ -32,7 +32,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
   - Funções / Instâncias
     - `Client(options)`: Instância responsável por da inicio ao bot e configura-lo.
 
-      -`options.tokne`: Informar o token de sua aplicação. (Obrigatório)
+      -`options.token`: Informar o token de sua aplicação. (Obrigatório)
       -`options.prefixes`: informar o prefixo do seu bot (em breve terá como adicionar em array). (Obrigatório)
       - `options.guilds`: Caso queira que sua aplicação seja exclusiva para algumas guildas, adicione a id da guild ( caso seja um não precisa ser em array, caso seja mais de um é obrigatório ser em array).
       - `options.cooldown`: Configurar cooldown de sua aplicação.
