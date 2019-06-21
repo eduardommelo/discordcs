@@ -63,7 +63,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
 ## Exemplo de Como usar
   - Iniciar o bot
       ```js
-      const DiscordCS = require('discordCS')
+      const DiscordCS = require('discordcs')
       const client = new DiscordCS.Client({
         token: 'token do bot',
         prefixes: 'prefixo do bot',
@@ -77,7 +77,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
       ```
   - Iniciar um comando
     ```js
-    const {Command} = require('discordCS')
+    const {Command} = require('discordcs')
         class ping extends Command{
             constructor(client){
                 super(client,{
