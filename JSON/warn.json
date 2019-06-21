@@ -11,13 +11,11 @@
     "permissionBot":  "** {member}, Não possuo a permissão `{permissions}` para executar o comando: `{command}`.**",
     "hasPermission":  "** {member}, Você não possui a permissão `{permissions}` para executar o comando: `{command}`.**",
     "guildsMessage":  "[SUCESSO] {guild} ({guild.id}) foi adicionado com sucesso!",
-
     "guildsErr":      "[SUCESSO] O servidor com id {g.id} foi adicionado com sucesso, mas não foi encontrado no momento!",
     "warnDuplicateOwners": "[AVISO] Usuário {member} está com id duplicado.",
     "mentionBot": "**Olá {member} meu nome é {bot} e meu prefixo neste servidor é `{prefix}`.**",
     "logGuildCreate": "[SUCESSO] O {bot} acabou de entrar no serivodr {guild} ({guild.id}).",
     "logGuildDelete":"[SUCESSO] O {bot} acabou de sair do serivodr {guild} ({guild.id})."
     }
-=======
     "guildsErr":      "[SUCESSO] O servidor com id {g.id} foi adicionado com sucesso, mas não foi encontrado no momento!"
 }
