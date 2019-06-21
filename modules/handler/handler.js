@@ -17,6 +17,23 @@ class handler{
              *  com as config feitas na instância client
              */
             const oldMessage = message[0] 
+            if(this.client.getMentionBot){
+                if(this.client.getMentionBot.rest === true){
+                    if(oldMessage.content.startsWith(this.client.user) && oldMessage.content.length > 21) return
+                    const messageMention = this.client.getMentionBot.message === '' || typeof this.client.getMentionBot.message === 'undefined' ? jsonMessage.mentionBot : this.client.getMentionBot.message
+                    const replaceParam = messageMention
+                    .replace('{member}', oldMessage.author)
+                    .replace('{member.id}', oldMessage.author.id)
+                    .replace('{member.tag}', oldMessage.author.tag)
+                    .replace('{prefix}', this.client.getPrefixes)
+                    .replace('{bot}', this.client.user)
+                    .replace('{bot.username}', this.client.user.username)
+                    .replace('{bot.tag}', this.client.user.tag)
+                    .replace('{bot.id}', this.client.user.id)
+                    .replace('{bot.nickname}', this.client.user.nickname)
+                    if(oldMessage.content.startsWith(this.client.user)) return oldMessage.channel.send(replaceParam) 
+                }  
+            }
             if(oldMessage.channel.type == 'dm') return
             if (oldMessage.content.indexOf(this.client.getPrefixes) !== 0) return
             const args = oldMessage.content.slice(this.client.getPrefixes.length).trim().split(/ +/g)
@@ -39,6 +56,9 @@ class handler{
                             .replace('{guild.id}', oldMessage.guild.id)
                             .replace('{guild.name}', oldMessage.guild.name)
                             .replace('{command}', cmd.command)
+                            .replace('{bot.username}', this.client.user.username)
+                            .replace('{bot.tag}', this.client.user.tag)
+                            .replace('{bot.id}', this.client.user.id)
                             if(Array.isArray(permHas)){
                                 for(const has of permHas){
                                     if(!oldMessage.member.hasPermission(has)){
@@ -72,6 +92,9 @@ class handler{
                         .replace('{guild.id}', oldMessage.guild.id)
                         .replace('{guild.name}', oldMessage.guild.name)
                         .replace('{command}', cmd.command)
+                        .replace('{bot.username}', this.client.user.username)
+                        .replace('{bot.tag}', this.client.user.tag)
+                        .replace('{bot.id}', this.client.user.id)
                         if(Array.isArray(perm)){
                             for(const p of perm){
                                 if(!oldMessage.guild.me.hasPermission(p)){
@@ -105,6 +128,9 @@ class handler{
                             .replace('{guild}', oldMessage.guild.name + ' ('+oldMessage.guild.id+')')
                             .replace('{guild.id}', oldMessage.guild.id)
                             .replace('{guild.name}', oldMessage.guild.name)
+                            .replace('{bot.username}', this.client.user.username)
+                            .replace('{bot.tag}', this.client.user.tag)
+                            .replace('{bot.id}', this.client.user.id)
 
                             oldMessage.channel.send(warnCooldown+'')
                             return
@@ -135,6 +161,9 @@ class handler{
                       .replace('{guild}', oldMessage.guild.name + '('+oldMessage.guild.id+')')
                       .replace('{guild.id}', oldMessage.guild.id)
                       .replace('{guild.name}', oldMessage.guild.name)
+                      .replace('{bot.username}', this.client.user.username)
+                      .replace('{bot.tag}', this.client.user.tag)
+                      .replace('{bot.id}', this.client.user.id)
                       oldMessage.channel.send(warnMessage)
                     return
                   }

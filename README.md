@@ -1,3 +1,6 @@
+<div><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
+
+
 
 ## Sobre o projeto
 O **DiscordCS** é uma biblioteca de suporte para [discord.js](https://discord.js.org/#/docs/main/stable/class/Guild) com o foco de desenvolver um projeto de uma forma estruturada e seja mais simples para aqueles que não possui uma experiência de desenvolver um bot, desenvolvido em   [Node.js](https://nodejs.org), ele traz esta solução para os usuários criar sua aplicação de uma forma mais rápida e ao mesmo tempo bem estruturada, é claro que estou prezando também para aqueles que quer desenvolver algo mais complexo.
@@ -29,7 +32,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
   - Funções / Instâncias
     - `Client(options)`: Instância responsável por da inicio ao bot e configura-lo.
 
-      -`options.tokne`: Informar o token de sua aplicação. (Obrigatório)
+      -`options.token`: Informar o token de sua aplicação. (Obrigatório)
       -`options.prefixes`: informar o prefixo do seu bot (em breve terá como adicionar em array). (Obrigatório)
       - `options.guilds`: Caso queira que sua aplicação seja exclusiva para algumas guildas, adicione a id da guild ( caso seja um não precisa ser em array, caso seja mais de um é obrigatório ser em array).
       - `options.cooldown`: Configurar cooldown de sua aplicação.
@@ -44,6 +47,10 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
           - `messagesWarn.hasPermission`: Definir a mensagem que o membro não possui a permissão necessária.
           - `messagesWarn.botPermission`: definir a mensagem que o bot não possui a permissão.
           - `messagesWarn.err`: Definir mensagem de avisar quando ocorre erro na aplicação.
+      - `options.mentionBot`: fazer o bot responder assim que quando for mencionado.
+          - `mentionBot.rest`: true/false para ver se ele pode responder.
+          - `mentionBot.message`: Personalizar a mensagem que ele vai responder para o usuário que for menciona-lo.
+
       - `Client.CommandsRegister.registerCommands(__dirname+"/./caminho)`: definir aonde fica a pasta dos comandos.
 
     - `Command(client, info)`: Instância responsável por estruturar o comando do bot
@@ -60,7 +67,7 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
 ## Exemplo de Como usar
   - Iniciar o bot
       ```js
-      const DiscordCS = require('discordCS')
+      const DiscordCS = require('discordcs')
       const client = new DiscordCS.Client({
         token: 'token do bot',
         prefixes: 'prefixo do bot',
@@ -74,19 +81,19 @@ Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de sua
       ```
   - Iniciar um comando
     ```js
-    const {Command} = require('discordCS')
+    const {Command} = require('discordcs')
         class ping extends Command{
             constructor(client){
                 super(client,{
                     command: 'ping',
-                    module: 'teste',
                     aliases: ['p'],
                     description: 'ping pong',
                 })
+                this.client = client
             }
 
           async startCommand(message, args){
-                message.channel.send('pong!')
+                message.channel.send('pong! '+ Math.round(this.client.ping))
             }
         }
         module.exports = ping

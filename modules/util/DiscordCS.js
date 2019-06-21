@@ -42,6 +42,7 @@ class DiscordCS extends Client{
         if(typeof options.description === 'undefined') options.description = false
         if(typeof options.messagesWarn === 'undefined') options.messagesWarn = false
         if(typeof options.token === 'undefined') throw new TypeError(jsonMessages.tokenErr)
+        if(typeof options.mentionBot === 'undefined') options.mentionBot == false
         if(typeof options.logs === 'undefined') options.logs = true
 
         super(options)
@@ -59,6 +60,7 @@ class DiscordCS extends Client{
         this._token = options.token
         this._cooldown = options.cooldown
         this._logs = options.logs
+        this._mentionBot = options.mentionBot
         //==============================//
         if(options.token){
             this.login(options.token).catch(err => console.log(err))
@@ -129,10 +131,27 @@ class DiscordCS extends Client{
             }
            
         })
+        this.on('guildDelete', guild =>{
+            if(options.logs == true){
+                const guildMessages = this.jsonMessages.logGuildDelete
+                .replace('{guild}', guild.name)
+                .replace('{guild.id}', guild.id)
+                .replace('{bot}', this.user.tag)
+                console.log(guildMessages)
+            }
+        })
         this.on('guildCreate', guild =>{
+            if(options.logs == true){
+                const guildMessage = this.jsonMessages.logGuildCreate
+                .replace('{guild}', guild.name)
+                .replace('{guild.id}', guild.id)
+                .replace('{bot}', this.user.tag)
+                console.log(guildMessage)
+            }
             if(options.guilds){
                 if(!Array.isArray(options.guilds)){
                         if(guild.id != options.guilds ) return guild.leave().then(r =>{
+                            if(options.logs == false) return
                             const guildCreate = this.jsonMessages.guildDelete.replace('{guild}', r.name).replace('{client.tag}', this.user.tag)
                             console.log(guildCreate)
                         return
@@ -167,6 +186,10 @@ class DiscordCS extends Client{
         if(!this._owners) return null
         return this._owners
     }
+    set setOwners(e){
+        if(!this._owners) return null
+        this._owners = e
+    }
     get getDescription(){
         if(!this._description) return null
         return this._description
@@ -197,6 +220,10 @@ class DiscordCS extends Client{
         if(!this._messagesWarn) return null
         return this._messagesWarn
     }
+    get getMentionBot(){
+        if(!this._mentionBot) return null
+        return this._mentionBot
+    }
 
     /**
      * 
@@ -206,12 +233,25 @@ class DiscordCS extends Client{
         if(options.owners){
             client.once('ready', () =>{
                 if(options.owners instanceof Array || options.owners instanceof Set){
+                    let n = 0;
                     for(const o of options.owners){
                         client.fetchUser(o).then(user => {
                             if(options.logs == false) return;
+                            let n = 0;
+                               for(let i=0;i<options.owners.length;i++){
+                                   if(options.owners[i] === o){
+                                        n++;
+                                        if(n>1){
+                                            options.owners.splice(n,1)
+                                            return;
+                                        }
+                                   }
+                               }
+
                             const fetchUsers = this.jsonMessages.fetchUser.replace('{member.username}', user.username)
                             console.log(fetchUsers)
                         }).catch(err =>{
+                            console.log(err)
                             if(options.logs == false) return
                             options.owners = false
                             const fetchUsers = this.jsonMessages.fetchUserError

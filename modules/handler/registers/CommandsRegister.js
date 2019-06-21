@@ -31,7 +31,7 @@ class CommandsRegister {
                 continue
             }
                 for(const a  of cmds.aliases){
-                    if(this.commands.some(c => c.command === a || cmds.aliases.includes(a))){
+                    if(this.commands.some(c => c.command === a || c.aliases.includes(a))){
                         throw new Error('[ERRO] este alternativa já existe.')
                     }
                 }
@@ -42,6 +42,9 @@ class CommandsRegister {
                     modules.commands.set(cmds.command, cmds)
                     this.commands.set(cmds.command, cmds)
                     return
+                }
+                if(this.client.getLogs == true){
+                    console.log('[SUCESSO] comando: '+ cmds.command+' carregado com sucesso!')
                 }
                 this.commands.set(cmds.command, cmds)
         }
