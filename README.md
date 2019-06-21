@@ -1,7 +1,7 @@
 
 
 <div style="text-align: center; margin: 0 auto;">
-  <center><img src="https://i.imgur.com/OwYlBJe.png" width="auto" /></center></div>
+  <center><img src="https://imgur.com/Fl8oQGB.png" width="auto" /></center></div>
 <div><center><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
 
 
