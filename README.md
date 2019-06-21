@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+
 <div><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
-=======
+
 <div style="text-align: center; margin: 0 auto;">
   <center><img src="https://i.imgur.com/OwYlBJe.png" width="auto" /></center></div>
 <div><center><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
->>>>>>> 8f6421803bf9ada23b1c38a445e9222061ebc635
 
 
 
