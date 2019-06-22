@@ -23,7 +23,7 @@ Sempre é bom você instalar a biblioteca *discord.js*, pois muitas das vezes de
 ### Como funciona? 
 Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de suas funções, ela vem com uma mala repleta de funções e então vai aqui alguns.
   - Parâmetro
-    Os parâmetros irão ser apresentados são palavras chaves que cada um deles retorna um dado especifico.
+  Parâmetros: Os parâmetros devem ser apresentados, são palavras chaves e cada um deles retorna um dado especifico.
     - `{member}`: Retorna o @mention do autor que executou o comando.
     - `{member.tag}`: Retorna o username + discriminator do autor que executou o comando.
     - `{member.id}`: Retorna id do autor que executou o comando.
