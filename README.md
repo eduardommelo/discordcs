@@ -4,9 +4,11 @@
   <center><img src="https://imgur.com/Fl8oQGB.png" width="auto" /></center></div>
 <div><center><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
 
-<div style="border: 1px solid red; background-color: #fff;font-family: Arial, sans-serif; padding: 10px;">
-  <p style="color: red; font-size: 18pt; font-weight: bold;">Este projeto foi descontinuado por não ter sentido de desenvolver uma lib que propoe suporte a um que já tem, ao mesmo tempo considerando as desmotivações, em breve nova lib será desenvolvida.</p>
-</div>
+
+```
+Este projeto foi descontinuado por não ter sentido de desenvolver uma lib que propoe suporte a um que já tem, ao mesmo tempo considerando as desmotivações, em breve nova lib será desenvolvida.
+```
+
 
 ## Sobre o projeto
 O **DiscordCS** é uma biblioteca de suporte para [discord.js](https://discord.js.org/#/docs/main/stable/class/Guild) com o foco de desenvolver um projeto de uma forma estruturada e seja mais simples para aqueles que não possui uma experiência de desenvolver um bot, desenvolvido em   [Node.js](https://nodejs.org), ele traz esta solução para os usuários criar sua aplicação de uma forma mais rápida e ao mesmo tempo bem estruturada, é claro que estou prezando também para aqueles que quer desenvolver algo mais complexo.
