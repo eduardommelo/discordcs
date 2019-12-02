@@ -6,7 +6,9 @@
 
 
 ```
-Este projeto foi descontinuado por não ter sentido de desenvolver uma lib que propoe suporte a um que já tem, ao mesmo tempo considerando as desmotivações, em breve nova lib será desenvolvida.
+Este projeto foi descontinuado por não ter sentido de desenvolver uma lib que propoe 
+suporte a um que já tem, ao mesmo tempo considerando as desmotivações, em breve nova lib será 
+desenvolvida.
 ```
 
 
