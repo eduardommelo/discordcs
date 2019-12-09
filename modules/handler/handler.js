@@ -18,7 +18,7 @@ class handler{
              */
             const oldMessage = message[0] 
             if(this.client.getMentionBot){
-                if(this.client.getMentionBot.rest === true){
+                if(this.client.getMentionBot.rest){
                     if(oldMessage.content.startsWith(this.client.user) && oldMessage.content.length > 21) return
                     const messageMention = this.client.getMentionBot.message === '' || typeof this.client.getMentionBot.message === 'undefined' ? jsonMessage.mentionBot : this.client.getMentionBot.message
                     const replaceParam = messageMention
@@ -34,20 +34,18 @@ class handler{
                     if(oldMessage.content.startsWith(this.client.user)) return oldMessage.channel.send(replaceParam) 
                 }  
             }
-            if(oldMessage.channel.type == 'dm') return
-            if (oldMessage.content.indexOf(this.client.getPrefixes) !== 0) return
+            if(oldMessage.channel.type == 'dm' || oldMessage.content.indexOf(this.client.getPrefixes) !== 0) return
             const args = oldMessage.content.slice(this.client.getPrefixes.length).trim().split(/ +/g)
             const command =(args.shift().toLowerCase() || oldMessage.guild.members.get(args[0]))
            for(const cmd of this.commandsRegister.commands.values()){
                if(cmd.command.toLowerCase() === command || cmd.aliases.includes(command.toLowerCase())){
-                if(cmd.permissions != null){
+                if(cmd.permissions){
                     if(cmd.permissions.member){
-      
                             const messageHas = this.client.getMessageWarn == null || !this.client.getMessageWarn ? jsonMessage.hasPermission: this.client.getMessageWarn.hasPermission
                             const permHas = typeof cmd.permissions.member == 'undefined' || cmd.permissions.member == '' ? '': cmd.permissions.member;
                             let array_hasPermissions = []
                             const arrayhas = array_hasPermissions == '' ? permHas : array_hasPermissions
-                            let require_permHas = messageHas
+                            const require_permHas = messageHas
                             .replace('{permissions}',Array.isArray(arrayhas) ? arrayhas.join(', '): arrayhas)
                             .replace('{member}',oldMessage.author)
                             .replace('{member.id}', oldMessage.author.id)
@@ -101,22 +99,18 @@ class handler{
                                     array_permissions.push(p)
                                 }
                             }
-                            if(array_permissions.length > 0){
-                                oldMessage.channel.send(require_perm)
-                                return
-                            }
+                            if(array_permissions.length > 0)
+                               return oldMessage.channel.send(require_perm)               
                         }else
                         {
-                            if(!oldMessage.guild.me.hasPermission(perm)){
-                                oldMessage.channel.send(require_perm)
-                                return
-                            }
+                            if(!oldMessage.guild.me.hasPermission(perm))
+                                return oldMessage.channel.send(require_perm)      
                         }
                     } 
                 }
                 if(this.client.getCooldown)
                 {
-                    if(this.client.getCooldown.set == true){
+                    if(this.client.getCooldown.set){
                       
                         if(this.cooldown.has(oldMessage.author.id)){
                           
@@ -135,12 +129,12 @@ class handler{
                             oldMessage.channel.send(warnCooldown+'')
                             return
                         }
-                        const time= typeof this.client.getCooldown.time === 'string' ? parseInt(this.client.getCooldown.time) : this.client.getCooldown.time
+                        const time=  isNaN(this.client.getCooldown.time) ? parseInt(this.client.getCooldown.time) : this.client.getCooldown.time
                         if(!this.cooldown.has(oldMessage.author.id)){
                             this.cooldown.add(oldMessage.author.id)
-                            setTimeout(()=>{
+                            setTimeout(()=>
                                 this.cooldown.delete(oldMessage.author.id)
-                            }, 1000 * time)
+                            , 1000 * time)
                         }
                     }
                 }
@@ -149,10 +143,8 @@ class handler{
                         owner = oldMessage.author.id === this.client.getOwners
                    }else{owner = this.client.getOwners.includes(oldMessage.author.id)}
                   if(cmd.isOwner == true && owner == false){
-                      if(this.client.getMessageWarn == false || this.client.getMessageWarn == null){
-                        oldMessage.channel.send(this._jsonMessage.warnOwner)
-                          return
-                      }
+                      if(!this.client.getMessageWarn || !this.client.getMessageWarn)
+                       return oldMessage.channel.send(this._jsonMessage.warnOwner)
                       const warnOwner = typeof  this.client.getMessageWarn.owner == 'undefined' ? this._jsonMessage.warnOwner: this.client.getMessageWarn.owner
                       const warnMessage = warnOwner
                       .replace('{member}', oldMessage.author)
@@ -164,11 +156,10 @@ class handler{
                       .replace('{bot.username}', this.client.user.username)
                       .replace('{bot.tag}', this.client.user.tag)
                       .replace('{bot.id}', this.client.user.id)
-                      oldMessage.channel.send(warnMessage)
-                    return
+                     return oldMessage.channel.send(warnMessage)
                   }
                     const newMessage = message[1]
-                    if(typeof newMessage != 'undefined'){
+                    if(newMessage){
                         const args_n = newMessage.content.slice(this.client.getPrefixes.length).trim().split(/ +/g)
                         const command_n =(args_n.shift().toLowerCase() || newMessage.guild.members.get(args_n[0]))
                         if(command === command_n) return;
@@ -177,7 +168,7 @@ class handler{
                }
            }
         }catch(err){
-            console.log(err)
+            throw new Error(err)
         }
     }
 }
