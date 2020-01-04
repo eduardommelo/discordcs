@@ -42,13 +42,12 @@ class handler{
                if(cmd.command.toLowerCase() === command || cmd.aliases.includes(command.toLowerCase())){
                 if(cmd.permissions != null){
                     if(cmd.permissions.member){
-      
                             const messageHas = this.client.getMessageWarn == null || !this.client.getMessageWarn ? jsonMessage.hasPermission: this.client.getMessageWarn.hasPermission
                             const permHas = typeof cmd.permissions.member == 'undefined' || cmd.permissions.member == '' ? '': cmd.permissions.member;
                             let array_hasPermissions = []
                             const arrayhas = array_hasPermissions == '' ? permHas : array_hasPermissions
                             let require_permHas = messageHas
-                            .replace('{permissions}',Array.isArray(arrayhas) ? arrayhas.join(', '): arrayhas)
+                            .replace('{permissions}',Array.isArray(cmd.permissions.member) ? cmd.permissions.member.join(', '): cmd.permissions.member)
                             .replace('{member}',oldMessage.author)
                             .replace('{member.id}', oldMessage.author.id)
                             .replace('{member.tag}', oldMessage.author.tag)
@@ -59,32 +58,13 @@ class handler{
                             .replace('{bot.username}', this.client.user.username)
                             .replace('{bot.tag}', this.client.user.tag)
                             .replace('{bot.id}', this.client.user.id)
-                            if(Array.isArray(permHas)){
-                                for(const has of permHas){
-                                    if(!oldMessage.member.hasPermission(has)){
-                                        array_permissions.push(has)
-                                    }
-                                }
-                                if(array_permissions.length > 0){
-                                    oldMessage.channel.send(require_permHas)
-                                    return
-                                }
-                            }else
-                            {
-                                if(!oldMessage.member.hasPermission(permHas)){
-                                    oldMessage.channel.send(require_permHas)
-                                    return
-                                }
-                            }
-
+                            if(!oldMessage.member.hasPermission(permHas)) return  oldMessage.channel.send(require_permHas)
                     }
                     if(cmd.permissions.bot){
                         const messagePerm = this.client.getMessageWarn == null ? jsonMessage.permissionBot : this.client.getMessageWarn.botPermission
                         const perm = typeof cmd.permissions.bot == 'undefined'|| cmd.permissions.bot == '' ? '' : cmd.permissions.bot ;
-                        let array_permissions = []
-                        const arrayIs = array_permissions == '' ? perm : array_permissions
                         let require_perm = messagePerm
-                        .replace('{permissions}',Array.isArray(arrayIs) ? arrayIs.join(', '): arrayIs)
+                        .replace('{permissions}',Array.isArray(cmd.permissions.bot) ? cmd.permissions.bot.join(', ') : cmd.permissions.bot)
                         .replace('{member}',oldMessage.author)
                         .replace('{member.id}', oldMessage.author.id)
                         .replace('{member.tag}', oldMessage.author.tag)
@@ -95,23 +75,7 @@ class handler{
                         .replace('{bot.username}', this.client.user.username)
                         .replace('{bot.tag}', this.client.user.tag)
                         .replace('{bot.id}', this.client.user.id)
-                        if(Array.isArray(perm)){
-                            for(const p of perm){
-                                if(!oldMessage.guild.me.hasPermission(p)){
-                                    array_permissions.push(p)
-                                }
-                            }
-                            if(array_permissions.length > 0){
-                                oldMessage.channel.send(require_perm)
-                                return
-                            }
-                        }else
-                        {
-                            if(!oldMessage.guild.me.hasPermission(perm)){
-                                oldMessage.channel.send(require_perm)
-                                return
-                            }
-                        }
+                        if(!oldMessage.guild.me.hasPermission(perm) || !oldMessage.channel.permissionsFor(this.client.user).has(perm)) return oldMessage.channel.send(require_perm)
                     } 
                 }
                 if(this.client.getCooldown)

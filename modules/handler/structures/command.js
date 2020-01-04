@@ -7,7 +7,7 @@ class Command{
         this.description = commandInfo.description
         this.module = commandInfo.module
         this.isOwner = Boolean(commandInfo.isOwner) || false
-        this.label = commandInfo.label
+        this.label = commandInfo.label || false
         this.permissionsBot = commandInfo.permissionsBot || []
         this.jsonMessage = jsonMessage
         this.permissions = commandInfo.permissions

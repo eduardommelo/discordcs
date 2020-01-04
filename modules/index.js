@@ -3,5 +3,6 @@ module.exports = {
     Command:   require('./handler/structures/command.js'),
     Modules:   require('./handler/structures/modules.js'),
     Handle:     require('./handler/handler.js'),
-    CommandsRegister:  require('./handler/registers/CommandsRegister')
+    CommandsRegister:  require('./handler/registers/CommandsRegister'),
+    Discord: require('discord.js')
 }

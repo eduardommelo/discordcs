@@ -3,6 +3,7 @@ const Handle = require('../handler/handler')
 const CommandsRegister = require('../handler/registers/CommandsRegister')
 const jsonMessages = require('../../JSON/warn.json')
 const ready = require('./ready')
+require('../../prototype/MessageSend').start()
 
 /**
  * Esta classe é o núcleo aonde vai acontecer 90% de suas requisições

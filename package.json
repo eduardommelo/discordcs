@@ -1,22 +1,20 @@
 {
   "name": "discordcs",
-  "version": "1.0.7",
-  "description": "Biblioteca com o foco de facilitar aos usuários de desenvolver seu bot.",
-  "main": "modules/index.js",
+  "version": "1.0.0",
+  "description": "Desenvolva seu bot com maior facilidade do mundo",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": 
-  [
+  "keywords": [
     "discord",
-    "lib",
-    "JavaScript"
+    "bot"
   ],
   "author": "Eduardo Melo",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
-    "fs": "0.0.1-security",
-    "require-all": "^3.0.0"
+    "node-fetch": "^2.6.0",
+    "os": "^0.1.1",
+    "ws": "^7.1.2"
   }
 }
