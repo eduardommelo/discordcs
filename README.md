@@ -1,11 +1,15 @@
-<<<<<<< HEAD
-<div><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
-=======
-<div style="text-align: center; margin: 0 auto;">
-  <center><img src="https://i.imgur.com/OwYlBJe.png" width="auto" /></center></div>
-<div><center><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
->>>>>>> 8f6421803bf9ada23b1c38a445e9222061ebc635
 
+
+<div style="text-align: center; margin: 0 auto;">
+  <center><img src="https://imgur.com/Fl8oQGB.png" width="auto" /></center></div>
+<div><center><a href="https://nodei.co/npm/discordcs/"><img src="https://nodei.co/npm-dl/discordcs.png"></a></div>
+
+
+```
+Este projeto foi descontinuado por não ter sentido de desenvolver uma lib que propoe 
+suporte a um que já tem, ao mesmo tempo considerando as desmotivações, em breve nova lib será 
+desenvolvida.
+```
 
 
 ## Sobre o projeto
@@ -24,8 +28,7 @@ Sempre é bom você instalar a biblioteca *discord.js*, pois muitas das vezes de
 
 ### Como funciona? 
 Bom, após de você instalar esta maravilhosa biblioteca é preciso saber de suas funções, ela vem com uma mala repleta de funções e então vai aqui alguns.
-  - Parâmetro
-    Os parâmetros irão ser apresentados são palavras chaves que cada um deles retorna um dado especifico.
+  - Parâmetros: Os parâmetros devem ser apresentados, são palavras chaves e cada um deles retorna um dado especifico.
     - `{member}`: Retorna o @mention do autor que executou o comando.
     - `{member.tag}`: Retorna o username + discriminator do autor que executou o comando.
     - `{member.id}`: Retorna id do autor que executou o comando.
